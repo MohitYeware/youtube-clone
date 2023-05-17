@@ -3,12 +3,12 @@ import { toggleMenu } from "../utils/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isSearchPage, setIsSearchPage] = useState(false);
   const searchCache = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
@@ -65,9 +65,14 @@ const Header = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setShowSuggestions(false)}
+            // onBlur={() => setShowSuggestions(false)}
           />
-          <button className="border border-gray-400 bg-gray-100 px-4 py-2 rounded-r-full">
+          <button
+            className="border border-gray-400 bg-gray-100 px-4 py-2 rounded-r-full"
+            onClick={() => {
+              setIsSearchPage(true);
+              setShowSuggestions(false);
+            }}>
             🔍
           </button>
         </div>
@@ -77,7 +82,13 @@ const Header = () => {
               {suggestions.map((s, index) => (
                 <li
                   key={index}
-                  className="py-2 cursor-pointer shadow-sm hover:bg-gray-100">
+                  value={s}
+                  name={s}
+                  className="py-2 cursor-pointer shadow-sm hover:bg-gray-100"
+                  onClick={() => {
+                    setSearchQuery(s);
+                    setShowSuggestions(false);
+                  }}>
                   🔍 {s}
                 </li>
               ))}
