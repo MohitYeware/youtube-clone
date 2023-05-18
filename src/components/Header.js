@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/constants";
 import { cacheSuggestionResults } from "../utils/searchSuggestionSlice";
 import { Link } from "react-router-dom";
+import { HiOutlineUserCircle } from "react-icons/hi";
+import { IoMenuOutline } from "react-icons/io5";
+import { CiSearch } from "react-icons/ci";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,25 +46,25 @@ const Header = () => {
   return (
     <div className="grid grid-flow-col p-4 shadow-lg">
       <div className="flex col-span-1">
-        <img
-          className="h-10 cursor-pointer"
+        <IoMenuOutline
           alt="menu"
           onClick={() => toggleMenuHandler()}
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
+          size={40}
         />
         <Link to="/">
           <img
-            className="bg-cover h-10 mx-2"
+            className="bg-cover h-8 mx-2 my-1"
             alt="youtube-logo"
             src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg"
           />
         </Link>
       </div>
       <div className="col-span-10 px-48">
-        <div>
+        <div className="flex">
           <input
-            className="w-96 px-8 border border-gray-400 p-2 rounded-l-full"
+            className="w-96 px-8 border border-gray-400 rounded-l-full"
             type="text"
+            placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
@@ -69,19 +72,23 @@ const Header = () => {
           />
           <Link to={`/results?search_query=${searchQuery}`}>
             <button
-              className="border border-gray-400 bg-gray-100 px-4 py-2 rounded-r-full"
+              className="border h-10 border-gray-400 bg-gray-100 px-4 rounded-r-full"
               onClick={() => {
                 setShowSuggestions(false);
               }}>
-              🔍
+              <CiSearch size={30} />
             </button>
           </Link>
         </div>
         {showSuggestions && (
           <div className="absolute py-2 px-2 w-96 bg-white shadow-lg rounded-lg border border-gray-100">
-            <ul>
-              {suggestions?.map((s, index) => (
-                <li
+            {suggestions?.map((s, index) => (
+              <span className="flex">
+                <CiSearch
+                  className="mx-3 my-2"
+                  size={25}
+                />
+                <h4
                   key={index}
                   value={s}
                   name={s}
@@ -90,19 +97,15 @@ const Header = () => {
                     setSearchQuery(s);
                     setShowSuggestions(false);
                   }}>
-                  🔍 {s}
-                </li>
-              ))}
-            </ul>
+                  {s}
+                </h4>
+              </span>
+            ))}
           </div>
         )}
       </div>
       <div className="col-span-1">
-        <img
-          className="h-10"
-          alt="user"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2fmKVxObx6S1S87K3_FwX35IIwAPqgGs0A&usqp=CAU"
-        />
+        <HiOutlineUserCircle size={40} />
       </div>
     </div>
   );

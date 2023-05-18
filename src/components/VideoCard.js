@@ -7,7 +7,7 @@ const VideoCard = ({ info }) => {
   return (
     <div className="flex flex-col p-2 mx-1 my-2 w-72">
       <img
-        src={thumbnails.medium.url}
+        src={thumbnails?.medium?.url}
         alt="thumbnail"
         className="rounded-lg"
       />
@@ -15,7 +15,7 @@ const VideoCard = ({ info }) => {
         <li className="font-bold py-1">{title}</li>
         <li className="text-gray-500">{channelTitle}</li>
         <li className="text-gray-500">
-          {Math.round(statistics.viewCount / 100000)}M views
+          {Math.round(statistics?.viewCount / 1000000)}M views
         </li>
       </ul>
     </div>

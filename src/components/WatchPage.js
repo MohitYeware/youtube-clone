@@ -32,9 +32,11 @@ const WatchPage = () => {
         <h5>{channelTitle}</h5>
       </div>
       <div className="bg-gray-200 mx-5 rounded-lg p-2 w-[56rem] h-24">
-        <p className="font-bold">
-          {Math.round(statistics.viewCount / 1000)}K views
-        </p>
+        {statistics && (
+          <p className="font-bold">
+            {Math.round(statistics?.viewCount / 1000)}K views
+          </p>
+        )}
         <p className="truncate">{description}</p>
       </div>
       <CommentsContainer />
