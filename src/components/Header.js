@@ -80,7 +80,7 @@ const Header = () => {
             </button>
           </Link>
         </div>
-        {showSuggestions && (
+        {showSuggestions && searchQuery.length > 1 && (
           <div className="absolute py-2 px-2 w-96 bg-white shadow-lg rounded-lg border border-gray-100">
             {suggestions?.map((s, index) => (
               <span

@@ -3,12 +3,16 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { useSearchParams } from "react-router-dom";
 import SearchedVideoCard from "./SearchedVideoCard";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openMenu } from "../utils/appSlice";
 
 const SearchedVideosList = () => {
   const [searchVideoList, setSearchVideoList] = useState([]);
   const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(openMenu());
     getSearchedVideoList();
   }, []);
 
