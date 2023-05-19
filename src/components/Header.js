@@ -83,13 +83,14 @@ const Header = () => {
         {showSuggestions && (
           <div className="absolute py-2 px-2 w-96 bg-white shadow-lg rounded-lg border border-gray-100">
             {suggestions?.map((s, index) => (
-              <span className="flex">
+              <span
+                key={index}
+                className="flex">
                 <CiSearch
                   className="mx-3 my-2"
                   size={25}
                 />
                 <h4
-                  key={index}
                   value={s}
                   name={s}
                   className="py-2 cursor-pointer shadow-sm hover:bg-gray-100"
