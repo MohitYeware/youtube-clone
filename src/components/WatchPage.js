@@ -4,6 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useLocation, useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import { refactorVideoCount } from "../utils/helper";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -38,7 +39,7 @@ const WatchPage = () => {
         <div className="bg-gray-200 mx-5 rounded-lg p-2 w-[56rem] h-24">
           {statistics && (
             <p className="font-bold">
-              {Math.round(statistics?.viewCount / 1000)}K views
+              {refactorVideoCount(statistics?.viewCount)}
             </p>
           )}
           <p className="truncate">{description}</p>

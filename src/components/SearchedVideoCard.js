@@ -1,16 +1,10 @@
 import React from "react";
+import { checkAndReplaceSpecialCharacters } from "../utils/helper";
 
 const SearchedVideoCard = ({ details }) => {
   const { snippet } = details ?? {};
   const { title, channelTitle, thumbnails, description, publishedAt } =
     snippet ?? {};
-
-  const checkAndReplaceSpecialCharacters = (entity) => {
-    if (entity.includes("&amp;")) {
-      entity = entity.replaceAll("&amp;", "&");
-    }
-    return entity;
-  };
 
   return (
     <div className="flex my-8 cursor-pointer">

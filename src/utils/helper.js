@@ -1,4 +1,124 @@
-const nameList = [
+export const CommentsData = [
+  {
+    name: "Andy",
+    text: "Morbi efficitur gravida massa sed maximus.",
+    replies: [],
+  },
+  {
+    name: "Joe",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    replies: [
+      {
+        name: "Andy",
+        text: "Morbi eu risus ut metus lacinia mollis",
+        replies: [
+          {
+            name: "Anna",
+            text: "Morbi efficitur gravida massa sed maximus",
+            replies: [
+              {
+                name: "Kevin",
+                text: "Maecenas a nulla a arcu fermentum accumsan",
+                replies: [
+                  {
+                    name: "Mark",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    replies: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "Billy",
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            replies: [],
+          },
+          {
+            name: "Thomas",
+            text: "Morbi eu risus ut metus lacinia mollis",
+            replies: [
+              {
+                name: "Paul",
+                text: "Proin commodo odio eget orci elementum, non aliquam est mollis",
+                replies: [
+                  {
+                    name: "Kevin",
+                    text: "Maecenas a nulla a arcu fermentum accumsan",
+                    replies: [
+                      {
+                        name: "Gary",
+                        text: "Proin commodo odio eget",
+                        replies: [
+                          {
+                            name: "Martin",
+                            text: "Morbi efficitur gravida massa sed maximus",
+                            replies: [],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Martin",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    replies: [],
+  },
+  {
+    name: "Joseph",
+    text: "Morbi eu risus ut metus lacinia mollis",
+    replies: [],
+  },
+  {
+    name: "Billy",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    replies: [
+      {
+        name: "Kevin",
+        text: "Maecenas a nulla a arcu fermentum accumsan",
+        replies: [
+          {
+            name: "Gary",
+            text: "Proin commodo odio eget",
+            replies: [
+              {
+                name: "Martin",
+                text: "Morbi efficitur gravida massa sed maximus",
+                replies: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Justin",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    replies: [],
+  },
+  {
+    name: "Thomas",
+    text: "Morbi eu risus ut metus lacinia mollis",
+    replies: [
+      {
+        name: "Lea",
+        text: "Nam quis mauris quis massa interdum dictum non et augue",
+        replies: [],
+      },
+    ],
+  },
+];
+
+const NameList = [
   "Time",
   "Past",
   "Future",
@@ -175,7 +295,7 @@ const nameList = [
   "Paradox",
 ];
 
-const messages = [
+const Messages = [
   "I was looking for video like this",
   "Must watch for all",
   "You are a great example for others.",
@@ -188,9 +308,24 @@ const messages = [
 ];
 
 export function generateRandomName() {
-  return nameList[Math.floor(Math.random() * nameList.length)];
+  return NameList[Math.floor(Math.random() * NameList.length)];
 }
 
 export function generateRandomMessage() {
-  return messages[Math.floor(Math.random() * messages.length)];
+  return Messages[Math.floor(Math.random() * Messages.length)];
+}
+
+export function refactorVideoCount(count) {
+  let result = Math.round(count / 1000000);
+  if (result > 1) {
+    return `${result}M views`;
+  }
+  return `${Math.round(count / 1000)}K views`;
+}
+
+export function checkAndReplaceSpecialCharacters(entity) {
+  if (entity.includes("&amp;")) {
+    entity = entity.replaceAll("&amp;", "&");
+  }
+  return entity;
 }

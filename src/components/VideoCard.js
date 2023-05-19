@@ -1,4 +1,5 @@
 import React from "react";
+import { refactorVideoCount } from "../utils/helper";
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
@@ -15,7 +16,7 @@ const VideoCard = ({ info }) => {
         <li className="font-bold py-1">{title}</li>
         <li className="text-gray-500">{channelTitle}</li>
         <li className="text-gray-500">
-          {Math.round(statistics?.viewCount / 1000000)}M views
+          {refactorVideoCount(statistics?.viewCount)}
         </li>
       </ul>
     </div>
