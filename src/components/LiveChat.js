@@ -25,7 +25,7 @@ const LiveChat = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="mx-4 p-2 border border-black w-[28rem] h-[28rem] bg-gray-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
+        <div className="mx-4 p-2 border border-black w-[28rem] h-[25rem] bg-gray-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
           {chatMessages.map((c, index) => (
             <ChatMessage
               key={index}

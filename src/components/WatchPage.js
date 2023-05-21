@@ -18,6 +18,7 @@ const WatchPage = () => {
   const { title, channelTitle, description } = snippet;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(closeMenu());
   });
 
@@ -35,9 +36,9 @@ const WatchPage = () => {
           />
           <LiveChat />
         </div>
-        <div className="mx-5 my-2">
-          <h4 className="font-bold">{title}</h4>
-          <div className="flex flex-row p-1">
+        <div className="mx-0 my-4">
+          <h4 className="font-bold text-xl w-[56rem]">{title}</h4>
+          <div className="flex flex-row py-2 px-0.5">
             <h5>{channelTitle}</h5>
             <button
               className="border border-gray-300 ml-20 px-4 py-2 font-bold rounded-full"
@@ -49,11 +50,11 @@ const WatchPage = () => {
               disabled>
               Subscribe
             </button>
-            <div className="flex flex-row ml-48 p-2 bg-gray-100 rounded-full">
+            <div className="flex flex-row ml-48 px-4 py-2 bg-gray-100 rounded-full">
               <BiLike size={25} />
-              <span className="px-2">{statistics?.likeCount}</span>
+              <span className="px-3">{statistics?.likeCount}</span>
               <span className="border border-r-1 border-gray-300"></span>
-              <span className="px-1" />
+              <span className="px-1.5" />
               <BiDislike size={25} />
             </div>
             <div className="flex flex-row mx-2 p-2 bg-gray-100 rounded-full">
@@ -62,7 +63,7 @@ const WatchPage = () => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-200 mx-5 rounded-lg p-2 w-[56rem] h-20">
+        <div className="bg-gray-100 mt-2 rounded-lg p-2 w-[56rem] h-20">
           {statistics && (
             <p className="font-bold">
               {refactorVideoCount(statistics?.viewCount)}
