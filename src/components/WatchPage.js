@@ -5,6 +5,9 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
 import { refactorVideoCount } from "../utils/helper";
+import { BiLike } from "react-icons/bi";
+import { BiDislike } from "react-icons/bi";
+import { RiShareForwardLine } from "react-icons/ri";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -34,9 +37,32 @@ const WatchPage = () => {
         </div>
         <div className="mx-5 my-2">
           <h4 className="font-bold">{title}</h4>
-          <h5>{channelTitle}</h5>
+          <div className="flex flex-row p-1">
+            <h5>{channelTitle}</h5>
+            <button
+              className="border border-gray-300 ml-20 px-4 py-2 font-bold rounded-full"
+              disabled>
+              Join
+            </button>
+            <button
+              className="border bg-black text-white mx-2 px-4 py-2 font-bold rounded-full"
+              disabled>
+              Subscribe
+            </button>
+            <div className="flex flex-row ml-48 p-2 bg-gray-100 rounded-full">
+              <BiLike size={25} />
+              <span className="px-2">{statistics?.likeCount}</span>
+              <span className="border border-r-1 border-gray-300"></span>
+              <span className="px-1" />
+              <BiDislike size={25} />
+            </div>
+            <div className="flex flex-row mx-2 p-2 bg-gray-100 rounded-full">
+              <RiShareForwardLine size={25} />
+              <span className="mx-1 font-bold">Share</span>
+            </div>
+          </div>
         </div>
-        <div className="bg-gray-200 mx-5 rounded-lg p-2 w-[56rem] h-24">
+        <div className="bg-gray-200 mx-5 rounded-lg p-2 w-[56rem] h-20">
           {statistics && (
             <p className="font-bold">
               {refactorVideoCount(statistics?.viewCount)}
