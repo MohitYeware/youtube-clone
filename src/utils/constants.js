@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY = "";
+const GOOGLE_API_KEY = process.env.REACT_APP_API_KEY;
 const REGION_CODE = "DE";
 const MAX_RESULTS = 50;
 export const LIVE_CHAT_COUNT = 25;
