@@ -16,6 +16,14 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const getSearchSuggestions = async () => {
+      const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
+      const json = await data.json();
+      setSuggestions(json[1]);
+      // update cache
+      dispatch(cacheSuggestionResults({ [searchQuery]: json[1] }));
+    };
+
     // Debouncing used to search the results
     const timer = setTimeout(() => {
       // Check search query in cache otherwise fetch from the server
@@ -29,15 +37,7 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [searchQuery]);
-
-  const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
-    const json = await data.json();
-    setSuggestions(json[1]);
-    // update cache
-    dispatch(cacheSuggestionResults({ [searchQuery]: json[1] }));
-  };
+  }, [searchQuery, dispatch, searchCache]);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());

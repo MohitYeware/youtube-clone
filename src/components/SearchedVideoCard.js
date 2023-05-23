@@ -3,8 +3,7 @@ import { checkAndReplaceSpecialCharacters } from "../utils/helper";
 
 const SearchedVideoCard = ({ details }) => {
   const { snippet } = details ?? {};
-  const { title, channelTitle, thumbnails, description, publishedAt } =
-    snippet ?? {};
+  const { title, channelTitle, thumbnails, description } = snippet ?? {};
 
   return (
     <div className="flex my-8 cursor-pointer">

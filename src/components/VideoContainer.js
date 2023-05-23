@@ -8,10 +8,11 @@ import { openMenu } from "../utils/appSlice";
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(openMenu());
     getVideos();
-  }, []);
+    dispatch(openMenu());
+  }, [dispatch]);
 
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);

@@ -12,17 +12,17 @@ const SearchedVideosList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(openMenu());
-    getSearchedVideoList();
-  }, []);
+    const getSearchedVideoList = async () => {
+      const data = await fetch(
+        YOUTUBE_SEARCH_API + searchParams.get("search_query")
+      );
+      const json = await data.json();
+      setSearchVideoList(json);
+    };
 
-  const getSearchedVideoList = async () => {
-    const data = await fetch(
-      YOUTUBE_SEARCH_API + searchParams.get("search_query")
-    );
-    const json = await data.json();
-    setSearchVideoList(json);
-  };
+    getSearchedVideoList();
+    dispatch(openMenu());
+  }, [dispatch, searchParams]);
 
   const getVideoId = (videoIdObj) => {
     const result = Object.keys(videoIdObj).filter((x) => {
