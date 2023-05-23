@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/youtube-clone/static/css/main.3f96e93c.css",
-    "main.js": "/youtube-clone/static/js/main.1bb1dc53.js",
+    "main.js": "/youtube-clone/static/js/main.df68ad36.js",
     "static/js/27.c565c935.chunk.js": "/youtube-clone/static/js/27.c565c935.chunk.js",
     "index.html": "/youtube-clone/index.html"
   },
   "entrypoints": [
     "static/css/main.3f96e93c.css",
-    "static/js/main.1bb1dc53.js"
+    "static/js/main.df68ad36.js"
   ]
 }
